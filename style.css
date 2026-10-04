@@ -33,14 +33,18 @@ body {
 header {
   height: 74px;
   width: 100%;
-  position: absolute;
-  z-index: 2;
+  position: fixed; /* <--- Ubah dari absolute ke fixed */
+  top: 0;          /* Memastikan menempel di paling atas */
+  left: 0;
+  z-index: 100;    /* Menaikkan z-index agar selalu di atas konten lain */
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 4.5vw;
   border-bottom: 1px solid var(--line);
+  background: var(--canvas); /* Menambahkan background hitam agar konten di bawahnya tidak menembus */
 }
+
 .brand {
   color: #fff;
   text-decoration: none;
