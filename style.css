@@ -131,6 +131,7 @@ h2 {
   height: 0.9em; /* Sesuaikan persis dengan line-height h1 (0.9) */
   overflow: hidden;
   vertical-align: top;
+  padding-right: 0.12em; /* Tambahkan sedikit padding kanan untuk spasi */
 }
 
 .title-track {
@@ -143,6 +144,7 @@ h2 {
   height: 0.9em;
   line-height: 0.9;
   display: block;
+  white-space: nowrap;
 }
 
 /* Keyframes untuk pergeseran kata */
