@@ -1,122 +1,149 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: #000;
-            color: #fff;
-            font-family: 'Press Start 2P', cursive;
-            text-align: center;
-            overflow: hidden;
-            position: relative;
-        }
-        .container {
-            position: absolute;
-            top: 45%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 2;
-        }
-        .glitch {
-            font-size: 24px;
-            position: relative;
-            animation: glitch 1s infinite;
-        }
-        @keyframes glitch {
-            0% { text-shadow: 2px 2px red; }
-            25% { text-shadow: -2px -2px blue; }
-            50% { text-shadow: 2px -2px green; }
-            75% { text-shadow: -2px 2px yellow; }
-            100% { text-shadow: 2px 2px red; }
-        }
-        canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-    </style>
-</head>
-<body>
-    <canvas id="particleCanvas"></canvas>
-    <div class="container">
-        <h1 class="glitch">WEBSITE UNDER CONSTRUCTION</h1>
-    </div>
-    <script>
-        const canvas = document.getElementById("particleCanvas");
-        const ctx = canvas.getContext("2d");
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Gabriel Emil, creative developer portfolio."
+    />
+    <title>Gabriel Emil</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <a class="brand" href="#top">GE<span>.</span></a>
+      <nav>
+        <a href="#work">Work</a><a href="#about">About</a
+        ><a href="#contact">Contact</a>
+      </nav>
+      <button aria-label="Open navigation" aria-expanded="false">Menu</button>
+    </header>
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow"><i></i>Developer Malas</p>
+          <h1 class="hero-title">HALO<br />
+            <span class="title-rotator">
+              <span class="title-track">
+                <span>DUNIA</span>
+                <span>EMIL</span>
+                <span>SEMUANYA</span>
+              </span>
+            </span>
+          </h1>
 
-        let particlesArray = [];
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 3 + 1;
-                this.speedX = Math.random() * 3 - 1.5;
-                this.speedY = Math.random() * 3 - 1.5;
-            }
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-            }
-            draw() {
-                ctx.fillStyle = "#fff";
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        function initParticles() {
-            particlesArray = [];
-            for (let i = 0; i < 100; i++) {
-                particlesArray.push(new Particle());
-            }
-        }
-
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (let particle of particlesArray) {
-                particle.update();
-                particle.draw();
-            }
-            requestAnimationFrame(animateParticles);
-        }
-
-        initParticles();
-        animateParticles();
-
-        const words = ["Coming Soon", "Under Construction", "Stay Tuned", "i love cats", "i play games", "thinking about u rn", "Gabriel Emil"];
-        let index = 0;
-        function changeText() {
-            const textElement = document.querySelector(".glitch");
-            if (words[index] === "Gabriel Emil") {
-                textElement.innerText = words[index];
-                setTimeout(() => { index = 0; changeText(); }, 5000);
-            } else {
-                textElement.innerText = words[index];
-                index = (index + 1) % words.length;
-                setTimeout(changeText, 2000);
-            }
-        }
-        changeText();
-    </script>
-</body>
+          <div class="hero-foot">
+            <blockquote class="quote"
+              <p>"If you move forward you gain two, if you run you gain one."</p>
+              <cite>— Suletta Mercury, <span> MSG Witch From Mercury</span></cite>
+            </blockquote>
+            <a href="#work">Explore selected work ↘</a>
+          </div>
+        </div>
+        <div class="hero-image"><small>01 / 04</small></div>
+        <div class="stripe"><b></b><b></b><b></b></div>
+      </section>
+      <section id="about" class="intro section">
+        <p class="num">(01)</p>
+        <div>
+          <p class="eyebrow">Profile</p>
+          <h2>DESIGN WITH<br />A <em>DRIVING</em> PURPOSE.</h2>
+        </div>
+        <p>
+          I am Gabriel, a multidisciplinary creative based in Indonesia. I
+          partner with ambitious people and brands to turn sharp ideas into
+          websites and identities with character.
+        </p>
+      </section>
+      <section id="work" class="work section">
+        <div class="title">
+          <p class="num">(02)</p>
+          <div>
+            <p class="eyebrow">Selected projects</p>
+            <h2>WORK IN<br /><em>MOTION.</em></h2>
+          </div>
+          <p class="num">04 / 24</p>
+        </div>
+        <div class="projects">
+          <a href="#contact" class="project big"
+            ><figure class="image one">
+              <span>Brand experience</span><span>2026</span>
+            </figure>
+            <div>
+              <h3>APEX / STUDIO</h3>
+              <small>Digital identity ↗</small>
+            </div></a
+          ><a href="#contact" class="project"
+            ><figure class="image two">
+              <span>E-commerce</span><span>2025</span>
+            </figure>
+            <div>
+              <h3>FORM / FUNCTION</h3>
+              <small>Web design ↗</small>
+            </div></a
+          ><a href="#contact" class="project"
+            ><figure class="image three">
+              <span>Campaign</span><span>2025</span>
+            </figure>
+            <div>
+              <h3>FIELD NOTES</h3>
+              <small>Creative direction ↗</small>
+            </div></a
+          >
+        </div>
+        <a class="button" href="#contact">View all work ↗</a>
+      </section>
+      <section class="services section">
+        <p class="num">(03)</p>
+        <div>
+          <p class="eyebrow">What I do</p>
+          <h2>BUILT FOR<br /><em>THE NEXT LAP.</em></h2>
+        </div>
+        <div class="service-list">
+          <article>
+            <span>01</span>
+            <h3>Creative direction</h3>
+            <p>
+              Turning a clear point of view into a visual system with traction.
+            </p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Digital design</h3>
+            <p>
+              Editorial interfaces made to feel direct, useful, and
+              unmistakable.
+            </p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Development</h3>
+            <p>Fast, considered frontend builds that keep the idea intact.</p>
+          </article>
+        </div>
+      </section>
+      <section id="contact" class="contact">
+        <div class="contact-image"></div>
+        <div class="contact-copy">
+          <p class="eyebrow"><i></i>Have a project in mind?</p>
+          <h2>LET'S MAKE<br />SOMETHING <em>MOVE.</em></h2>
+          <a href="mailto:hello@gabrielemil.com">hello@gabrielemil.com ↗</a>
+        </div>
+        <div class="stripe"><b></b><b></b><b></b></div>
+      </section>
+    </main>
+    <footer>
+      <a class="brand" href="#top">GE<span>.</span></a>
+      <p>© 2026 Gabriel Emil.</p>
+      <div><a href="#">Instagram</a><a href="#">LinkedIn</a></div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
 </html>
