@@ -66,6 +66,11 @@ footer a {
   text-transform: uppercase;
   font-size: 11px;
   letter-spacing: 1.3px;
+  transition: color 0.2s ease;
+}
+nav a:hover,
+footer a:hover {
+  color: #fff;
 }
 button {
   display: none;
@@ -303,12 +308,22 @@ em {
    ======================================== */
 .projects {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 24px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px 24px;
 }
 .project {
   color: #fff;
   text-decoration: none;
+  transition: transform 0.25s ease;
+}
+.project:hover {
+  transform: translateY(-4px);
+}
+.project:hover figure.image {
+  border-color: var(--lblue);
+}
+.project:hover small {
+  color: #fff;
 }
 .image {
   height: 380px;
@@ -320,24 +335,31 @@ em {
   align-items: end;
   padding: 20px;
   position: relative;
+  border: 1px solid transparent;
+  transition: border-color 0.25s ease;
 }
 .big .image {
-  height: 510px;
+  height: 380px;
 }
 .one {
   background-image:
-    linear-gradient(#0000, #0008),
-    url("https://images.unsplash.com/photo-1556189250-72ba954cfc2b?auto=format&fit=crop&w=1200&q=85");
+    linear-gradient(#0002, #0009),
+    url("assets/magicbox-cover.png");
+}
+.four {
+  background-image:
+    linear-gradient(#0002, #0009),
+    url("PROJECTS/LAB 4/tugas-lab04.1/tugas-lab04.1/goal.png");
 }
 .two {
   background-image:
-    linear-gradient(#0000, #0008),
-    url("https://images.unsplash.com/photo-1494905998402-395d579af36f?auto=format&fit=crop&w=900&q=85");
+    linear-gradient(#0002, #0009),
+    url("PROJECTS/LAB 4/tugas-lab04.2/tugas-lab04.2/assets/images/beautiful.jpg");
 }
 .three {
   background-image:
-    linear-gradient(#0000, #0008),
-    url("https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=900&q=85");
+    linear-gradient(#0002, #0009),
+    url("PROJECTS/LAB 2/assets/earth.jpeg");
 }
 .image span,
 .project small {
@@ -346,18 +368,30 @@ em {
   letter-spacing: 1.2px;
 }
 .project > div {
-  padding: 17px 0 34px;
+  padding: 17px 0 24px;
   border-bottom: 1px solid var(--line);
   display: flex;
   justify-content: space-between;
-  gap: 10px;
+  align-items: flex-start;
+  gap: 12px;
 }
 .project h3 {
   font-size: 16px;
+  margin: 0 0 6px 0;
+  letter-spacing: -0.3px;
+}
+.project-desc {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.5;
   margin: 0;
+  max-width: 320px;
 }
 .project small {
   color: var(--body);
+  white-space: nowrap;
+  padding-top: 2px;
+  transition: color 0.2s ease;
 }
 .button {
   display: inline-block;
