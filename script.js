@@ -1,5 +1,31 @@
 const menuButton = document.querySelector('button[aria-label="Open navigation"]');
 const nav = document.querySelector("header nav");
+const themeToggle = document.querySelector(".theme-toggle");
+
+if (themeToggle) {
+  const savedTheme = window.localStorage.getItem("portfolio-theme");
+
+  if (savedTheme === "light") {
+    document.body.classList.add("light-mode");
+  }
+
+  const updateThemeLabel = () => {
+    const isLightMode = document.body.classList.contains("light-mode");
+    themeToggle.textContent = isLightMode ? "Dark" : "Light";
+    themeToggle.setAttribute(
+      "aria-label",
+      isLightMode ? "Switch to dark mode" : "Switch to light mode"
+    );
+  };
+
+  updateThemeLabel();
+
+  themeToggle.addEventListener("click", () => {
+    const isLightMode = document.body.classList.toggle("light-mode");
+    window.localStorage.setItem("portfolio-theme", isLightMode ? "light" : "dark");
+    updateThemeLabel();
+  });
+}
 
 if (menuButton && nav) {
   const closeMenu = () => {
@@ -15,6 +41,32 @@ if (menuButton && nav) {
   nav.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", closeMenu);
   });
+}
+
+const revealElements = document.querySelectorAll(
+  ".section, .project, .service-list article, .skill-group, .timeline-item, .contact"
+);
+
+revealElements.forEach((element) => {
+  element.classList.add("reveal-on-scroll");
+});
+
+if ("IntersectionObserver" in window) {
+  const revealObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12 }
+  );
+
+  revealElements.forEach((element) => revealObserver.observe(element));
+} else {
+  revealElements.forEach((element) => element.classList.add("is-visible"));
 }
 
 /* ====================================================
