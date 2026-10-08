@@ -58,6 +58,7 @@ header {
 nav {
   display: flex;
   gap: 32px;
+  margin-left: auto;
 }
 nav a,
 footer a {
@@ -74,6 +75,22 @@ footer a:hover {
 }
 button {
   display: none;
+}
+.theme-toggle {
+  display: block;
+  margin-left: 32px;
+  margin-right: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  color: var(--body);
+  cursor: pointer;
+  font: 600 11px Inter, Arial, sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.theme-toggle:hover {
+  color: var(--white);
 }
 /* ========================================
    Hero section
@@ -432,6 +449,9 @@ em {
   align-items: end;
   margin-bottom: 55px;
 }
+.title > div {
+  margin-left: 2vw;
+}
 /* ========================================
    Selected projects
    ======================================== */
@@ -539,15 +559,133 @@ em {
    ======================================== */
 .services {
   display: grid;
-  grid-template-columns: 12% 36% 52%;
+  grid-template-columns: 12fr 36fr 52fr;
   gap: 20px;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.services::before {
+  content: "";
+  position: absolute;
+  inset: 0 4.5vw 0 0;
+  z-index: -1;
+  background:
+    linear-gradient(
+      90deg,
+      var(--canvas) 0%,
+      rgba(0, 0, 0, 0.92) 38%,
+      rgba(0, 0, 0, 0.72) 72%,
+      rgba(0, 0, 0, 0.82) 100%
+    ),
+    url("assets/hanged-man-arcana.jpg") right center / min(34vw, 520px) auto no-repeat;
+  opacity: 0.42;
+  pointer-events: none;
+}
+
+/* ========================================
+   Light mode
+   ======================================== */
+body.light-mode {
+  --body: #454545;
+  --muted: #686868;
+  --line: #d8d8d8;
+  --canvas: #f5f5f2;
+  --surface: #e9e9e5;
+  --white: #111;
+  background: var(--canvas);
+  color: var(--white);
+}
+body.light-mode header,
+body.light-mode .contact-copy,
+body.light-mode header nav {
+  background: var(--canvas);
+}
+body.light-mode .brand,
+body.light-mode h1,
+body.light-mode h2,
+body.light-mode h3,
+body.light-mode .project,
+body.light-mode .hero-foot a:not(.spotify-widget),
+body.light-mode .contact-copy > a,
+body.light-mode nav a:hover,
+body.light-mode footer a:hover {
+  color: var(--white);
+}
+body.light-mode .hero-foot a:not(.spotify-widget),
+body.light-mode .contact-copy > a {
+  border-color: var(--white);
+}
+body.light-mode .theme-toggle {
+  color: var(--body);
+}
+body.light-mode .hero-image {
+  background: url("assets/hero-portrait.png") center/cover no-repeat;
+}
+body.light-mode .services::before {
+  background:
+    linear-gradient(
+      90deg,
+      var(--canvas) 0%,
+      rgba(245, 245, 242, 0.28) 38%,
+      rgba(245, 245, 242, 0.08) 72%,
+      rgba(245, 245, 242, 0.18) 100%
+    ),
+    url("assets/hanged-man-arcana.jpg") right center / min(34vw, 520px) auto no-repeat;
+  opacity: 0.28;
+}
+body.light-mode .spotify-card-cover {
+  background: var(--surface);
+}
+body.light-mode .spotify-card-title .track-title,
+body.light-mode .spotify-card-title .track-artist {
+  color: #fff;
+}
+body.light-mode .spotify-card-eq {
+  background: rgba(245, 245, 242, 0.42);
+}
+body.light-mode .spotify-progress-wrap {
+  background: rgba(17, 17, 17, 0.12);
+}
+body.light-mode .button {
+  color: var(--white);
+  border-color: var(--white);
+}
+body.light-mode header button:not(.theme-toggle) {
+  color: var(--white);
+}
+
+/* ========================================
+   Scroll reveal
+   ======================================== */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+.services > :nth-child(-n + 2) {
+  padding-left: 2vw;
+}
+.services > :nth-child(2) {
+  padding-left: 0;
 }
 .service-list {
   border-top: 1px solid var(--line);
 }
 .service-list article {
   display: grid;
-  grid-template-columns: 14% 43% 43%;
+  grid-template-columns: 14fr 43fr 43fr;
   padding: 25px 0;
   border-bottom: 1px solid var(--line);
   gap: 10px;
@@ -566,6 +704,7 @@ em {
   font-size: 13px;
   color: var(--body);
 }
+
 /* ========================================
    Skills / Tech Stack section
    ======================================== */
@@ -779,6 +918,7 @@ footer div {
                 transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
                 visibility 0.3s;
     pointer-events: none;
+    margin-left: 0;
   }
   header nav.open {
     opacity: 1;
@@ -800,6 +940,10 @@ footer div {
     text-transform: uppercase;
     font: 600 11px Inter;
     letter-spacing: 1px;
+  }
+  .theme-toggle {
+    margin-left: auto;
+    margin-right: 18px;
   }
   .hero {
     position: relative;
@@ -860,9 +1004,21 @@ footer div {
     grid-template-columns: 1fr;
     gap: 28px;
   }
+  .services::before {
+    right: 6vw;
+    background-position: center;
+    background-size: cover;
+    opacity: 0.18;
+  }
+  .services > :nth-child(-n + 2) {
+    padding-left: 0;
+  }
   .title {
     grid-template-columns: 1fr auto;
     gap: 26px;
+  }
+  .title > div {
+    margin-left: 0;
   }
   .title .num {
     grid-column: 1/-1;
@@ -924,5 +1080,12 @@ footer div {
   footer p {
     order: 3;
     width: 100%;
+  }
+  body.light-mode .hero-image {
+    background: url("assets/hero-portrait.png") center 30% / cover no-repeat;
+  }
+  body.light-mode .hero-copy h1,
+  body.light-mode .hero-foot {
+    text-shadow: none;
   }
 }
