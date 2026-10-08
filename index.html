@@ -40,21 +40,47 @@
           </h1>
 
           <div class="hero-foot">
-            <blockquote class="quote"
+            <blockquote class="quote">
               <p>"If you move forward you gain two, if you run you gain one."</p>
               <cite>— Suletta Mercury, <span> MSG Witch From Mercury</span></cite>
             </blockquote>
+
             <a href="#work">Explore selected work ↘</a>
           </div>
         </div>
-        <div class="hero-image"><small>01 / 04</small></div>
+        <div class="hero-image">
+          <!-- Spotify Live Info (Minimalist, No Background, Aligned Left) -->
+          <div id="spotify-card" class="spotify-card" style="display: none;">
+            <div class="spotify-card-cover">
+              <img id="spotify-album-art" src="" alt="Album Art" />
+              <div class="spotify-card-eq">
+                <span></span><span></span><span></span>
+              </div>
+            </div>
+            <div class="spotify-card-meta">
+              <div class="spotify-card-badge">
+                <span class="spotify-dot"></span>
+                <span>Now Playing</span>
+              </div>
+              <a id="spotify-track-link" href="https://open.spotify.com" target="_blank" rel="noopener noreferrer" class="spotify-card-title">
+                <p id="spotify-track" class="track-title">Loading...</p>
+                <p id="spotify-artist" class="track-artist"></p>
+              </a>
+              <div class="spotify-progress-wrap">
+                <div id="spotify-progress-bar" class="spotify-progress-bar"></div>
+              </div>
+            </div>
+          </div>
+
+          <small>01 / 04</small>
+        </div>
         <div class="stripe"><b></b><b></b><b></b></div>
       </section>
       <section id="about" class="intro section">
         <p class="num">(01)</p>
         <div>
           <p class="eyebrow">Profile</p>
-          <h2>DESIGN WITH<br />A <em>DRIVING</em> PURPOSE.</h2>
+          <h2>DESIGN DENGAN<br /> <em>TUJUAN</em> JELAS.</h2>
         </div>
         <p>
           Halo. Namaku Gabriel Emil. Kalian bisa memanggilku Emil. 
@@ -67,7 +93,7 @@
           <p class="num">(02)</p>
           <div>
             <p class="eyebrow">Selected projects</p>
-            <h2>WORK IN<br /><em>MOTION.</em></h2>
+            <h2>TUGAS<br /><em>LAB</em></h2>
           </div>
           <p class="num">04 / 24</p>
         </div>
@@ -122,49 +148,128 @@
             <div>
               <div>
                 <h3>KOTAK AJAIB 3D</h3>
-                <p class="project-desc">Manipulasi interaktif DOM dan perspektif CSS 3D untuk memecah gambar menjadi matriks kubus animasi.</p>
+                <p class="project-desc">Manipulasi interaktif DOM dan perspektif CSS 3D untuk memecah gambar menjadi matriks kubus animasi. Delicioso~</p>
               </div>
               <small>Lihat Demo ↗</small>
             </div>
           </a>
         </div>
-        <a class="button" href="#contact">View all work ↗</a>
+
       </section>
       <section class="services section">
         <p class="num">(03)</p>
         <div>
-          <p class="eyebrow">What I do</p>
-          <h2>BUILT FOR<br /><em>THE NEXT LAP.</em></h2>
+          <p class="eyebrow">Aku apa?</p>
+          <h2>HANGED MAN<br /><em>ARCANA.</em></h2>
         </div>
         <div class="service-list">
           <article>
             <span>01</span>
-            <h3>Creative direction</h3>
+            <h3>Paradigm Shift Thinker</h3>
             <p>
-              Turning a clear point of view into a visual system with traction.
+              Mampu mengubah sudut pandang dalam merancang arsitektur sistem untuk menemukan solusi yang inovatif.
             </p>
           </article>
           <article>
             <span>02</span>
-            <h3>Digital design</h3>
+            <h3>Pragmatic Refactorer</h3>
             <p>
-              Editorial interfaces made to feel direct, useful, and
-              unmistakable.
+              Rela mengorbankan kode lama dan utang teknis demi mewujudkan kualitas kode yang bersih serta skalabilitas jangka panjang.
+              (Engga sih. Aku percaya Reusability dalam OOP).
             </p>
           </article>
           <article>
             <span>03</span>
-            <h3>Development</h3>
-            <p>Fast, considered frontend builds that keep the idea intact.</p>
+            <h3>Zen Troubleshooter</h3>
+            <p>Tetap tenang dan logis saat menghadapi kendala rumit, serta tahu kapan harus berhenti sejenak dibanding memaksakan solusi secara membuta.
+               (Ini bohong ya guys. Token AI habis, kacau duniaku).
+            </p>
           </article>
         </div>
       </section>
+
+      <!-- SECTION TAMBAHAN 1: TECH STACK -->
+      <section id="skills" class="skills section">
+        <p class="num">(04)</p>
+        <div>
+          <p class="eyebrow">Keahlian or... diahli ahlikan</p>
+          <h2>ALAT &<br /><em>TEKNOLOGI.</em></h2>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-group">
+            <p class="skill-label">Frontend Core</p>
+            <ul class="skill-list">
+              <li>Next.js</li>
+              <li>React</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <p class="skill-label">Desain & Alat</p>
+            <ul class="skill-list">
+              <li>Figma</li>
+              <li>Git & GitHub</li>
+              <li>VS Code</li>
+              <li>Claude Fable 5.1</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <p class="skill-label">Sedang Dipelajari</p>
+            <ul class="skill-list">
+              <li>Kotlin</li>
+              <li>Swift</li>
+              <li>Cuda C++</li>
+              <li>Apapun yang menarik</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION TAMBAHAN 2: PENDIDIKAN / PERJALANAN -->
+      <section id="education" class="education section">
+        <p class="num">(05)</p>
+        <div>
+          <p class="eyebrow">Perjalanan</p>
+          <h2>AKADEMIS &<br /><em>PENGALAMAN.</em></h2>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <p class="timeline-year">2021 — 2024</p>
+              <h3>Siswa SMA KRISTEN BARANA</h3>
+              <p class="timeline-desc">Pertama kali memasuki dunia programming. Mengenal Python dan langsung tertarik dengan Tensorflow dan Matplotlib. Runner Up Technocorner UGM 2022 (Rencananya Begitu..)</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <p class="timeline-year">2024 — Sekarang</p>
+              <h3>Mahasiswa Aktif di Universitas Pelita Harapan</h3>
+              <p class="timeline-desc">Banyak belajar mengenai HTML 5, CSS, JS dan mulai mengenal framework modern seperti React.js.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <p class="timeline-year">Future</p>
+              <h3>Menjadi kaya dan Slow Living</h3>
+              <p class="timeline-desc">Meninggalkan hal hal berbau komputer dan hidup tenang di Kyoto, Jepang</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="contact" class="contact">
-        <div class="contact-image"></div>
+        <div class="contact-gallery">
+          <div class="gallery-item" style="background-image: url('assets/cat-1.webp');"></div>
+          <div class="gallery-item" style="background-image: url('assets/cat-2.webp');"></div>
+          <div class="gallery-item" style="background-image: url('assets/cat-3.webp');"></div>
+          <div class="gallery-item" style="background-image: url('assets/cat-4.webp');"></div>
+        </div>
         <div class="contact-copy">
-          <p class="eyebrow"><i></i>Have a project in mind?</p>
-          <h2>LET'S MAKE<br />SOMETHING <em>MOVE.</em></h2>
-          <a href="mailto:hello@gabrielemil.com">hello@gabrielemil.com ↗</a>
+          <p class="eyebrow"><i></i>Butuh seorang developer?</p>
+          <h2>MARI KITA<br />BEKERJA <em>SAMA.</em></h2>
+          <a href="mailto:gabrielcorporate02@gmail.com">CONTACT ME ↗</a>
         </div>
         <div class="stripe"><b></b><b></b><b></b></div>
       </section>

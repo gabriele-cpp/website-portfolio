@@ -216,7 +216,7 @@ em {
   color: var(--body);
   line-height: 1.7;
 }
-.hero-foot a,
+.hero-foot a:not(.spotify-widget),
 .contact-copy > a {
   color: #fff;
   text-transform: uppercase;
@@ -227,6 +227,135 @@ em {
   padding-bottom: 10px;
   border-bottom: 1px solid #fff;
   white-space: nowrap;
+}
+
+/* ========================================
+   Spotify Live Status (Minimalist, No Background, Bottom-Right)
+   ======================================== */
+.spotify-card {
+  position: absolute;
+  bottom: 7vh;
+  right: 4.5vw;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+  max-width: 320px;
+  z-index: 5;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.spotify-card-cover {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line);
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #000;
+}
+.spotify-card-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.spotify-card-eq {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5px;
+}
+.spotify-card-eq span {
+  width: 2.5px;
+  height: 12px;
+  background: var(--lblue);
+  border-radius: 1px;
+  animation: eqBounce 1.2s ease-in-out infinite alternate;
+}
+.spotify-card-eq span:nth-child(1) { animation-delay: 0.1s; height: 8px; }
+.spotify-card-eq span:nth-child(2) { animation-delay: 0.35s; height: 14px; }
+.spotify-card-eq span:nth-child(3) { animation-delay: 0.2s; height: 10px; }
+
+@keyframes eqBounce {
+  0% { transform: scaleY(0.3); }
+  100% { transform: scaleY(1.1); }
+}
+
+.spotify-card-meta {
+  flex: 1;
+  min-width: 0;
+}
+.spotify-card-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--lblue);
+  margin-bottom: 2px;
+}
+.spotify-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--lblue);
+  box-shadow: 0 0 6px var(--lblue);
+  animation: pulseDot 1.5s infinite;
+}
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+.spotify-card-title {
+  text-decoration: none;
+  display: block;
+}
+.spotify-card-title .track-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: -0.2px;
+  transition: color 0.2s ease;
+}
+.spotify-card-title:hover .track-title {
+  color: var(--lblue);
+}
+.spotify-card-title .track-artist {
+  font-size: 11px;
+  color: var(--muted);
+  margin: 1px 0 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Progress Bar */
+.spotify-progress-wrap {
+  width: 140px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.12);
+  margin-top: 6px;
+  overflow: hidden;
+}
+.spotify-progress-bar {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--lblue), var(--blue));
+  transition: width 0.5s linear;
 }
 .hero-image {
   min-height: 640px;
@@ -410,7 +539,7 @@ em {
    ======================================== */
 .services {
   display: grid;
-  grid-template-columns: 12% 44% 44%;
+  grid-template-columns: 12% 36% 52%;
   gap: 20px;
 }
 .service-list {
@@ -438,6 +567,135 @@ em {
   color: var(--body);
 }
 /* ========================================
+   Skills / Tech Stack section
+   ======================================== */
+.skills {
+  display: grid;
+  grid-template-columns: 12% 44% 44%;
+  gap: 20px;
+}
+.skills-grid {
+  grid-column: 2 / -1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--line);
+}
+.skill-group {
+  padding: 32px 28px 32px 0;
+  border-right: 1px solid var(--line);
+}
+.skill-group:last-child {
+  border-right: none;
+  padding-left: 28px;
+  padding-right: 0;
+}
+.skill-group:not(:first-child) {
+  padding-left: 28px;
+}
+.skill-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+  color: var(--lblue);
+  margin: 0 0 20px 0;
+}
+.skill-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.skill-list li {
+  font-size: 14px;
+  color: var(--body);
+  padding-left: 16px;
+  position: relative;
+}
+.skill-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--blue);
+}
+/* ========================================
+   Education / Timeline section
+   ======================================== */
+.education {
+  display: grid;
+  grid-template-columns: 12% 44% 44%;
+  gap: 20px;
+}
+.timeline {
+  grid-column: 2 / -1;
+  border-top: 1px solid var(--line);
+  padding-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 16px;
+  top: 32px;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(180deg, var(--lblue), var(--red));
+}
+.timeline-item {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: 24px;
+  padding-bottom: 44px;
+  position: relative;
+  align-items: start;
+}
+.timeline-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--lblue);
+  border: 2px solid var(--canvas);
+  box-shadow: 0 0 0 1px var(--lblue);
+  margin-top: 4px;
+  justify-self: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+.timeline-year {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 8px 0;
+}
+.timeline-content h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+  letter-spacing: -0.3px;
+  text-transform: uppercase;
+}
+.timeline-desc {
+  font-size: 13px;
+  color: var(--body);
+  line-height: 1.7;
+  margin: 0;
+  max-width: 500px;
+}
+/* ========================================
    Contact and footer
    ======================================== */
 .contact {
@@ -446,9 +704,27 @@ em {
   grid-template-columns: 1fr 1fr;
   position: relative;
 }
-.contact-image {
-  background: url("https://images.unsplash.com/photo-1504215680853-026ed2a45def?auto=format&fit=crop&w=1400&q=85")
-    center/cover;
+.contact-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 2px;
+  background: var(--line);
+  min-height: 630px;
+  overflow: hidden;
+}
+.gallery-item {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(15%) contrast(1.05);
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+.gallery-item:hover {
+  transform: scale(1.04);
+  filter: grayscale(0%) contrast(1.1);
+  z-index: 2;
 }
 .contact-copy {
   background: var(--surface);
@@ -570,6 +846,9 @@ footer div {
     flex-direction: column;
     text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
   }
+  .spotify-card {
+    display: none !important;
+  }
   .hero .stripe {
     z-index: 3;
   }
@@ -603,11 +882,34 @@ footer div {
   .service-list p {
     grid-column: 2;
   }
+  .skills,
+  .education {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .skills-grid {
+    grid-column: 1;
+    grid-template-columns: 1fr;
+  }
+  .skill-group,
+  .skill-group:not(:first-child),
+  .skill-group:last-child {
+    padding: 20px 0;
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+  }
+  .skill-group:last-child {
+    border-bottom: none;
+  }
+  .timeline {
+    grid-column: 1;
+  }
   .contact {
     display: block;
   }
-  .contact-image {
-    height: 310px;
+  .contact-gallery {
+    min-height: 340px;
+    height: 340px;
   }
   .contact-copy {
     padding: 78px 6vw;
